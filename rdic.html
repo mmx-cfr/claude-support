@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="refresh" content="0;url=claude://cowork/new?q=run%20the%20design%20intake%20skill">
+  <title>Opening Claude...</title>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("q") || "Run the design intake check";
+    const deepLink = "claude://cowork/new?q=" + encodeURIComponent(q);
+    window.location.href = deepLink;
+  </script>
 </head>
 <body>
-  <p>Opening Claude... <a href="claude://cowork/new?q=run%20the%20design%20intake%20skill">Click here if it doesn't open automatically.</a></p>
+  <p>Opening Claude...</p>
+  <p id="fallback"></p>
+  <script>
+    const link = document.getElementById("fallback");
+    link.innerHTML = '<a href="' + deepLink + '">Click here if it doesn\'t open automatically.</a>';
+  </script>
 </body>
 </html>
